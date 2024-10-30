@@ -3,12 +3,13 @@ package lat.pam.utsproject
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class FoodAdapter(private val foodList: List<Food>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(private val foodList: List<Food>, private val listener: OnItemClickListener) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout_food, parent, false)
@@ -20,6 +21,10 @@ class FoodAdapter(private val foodList: List<Food>) : RecyclerView.Adapter<FoodA
         holder.foodName.text = food.name
         holder.foodDescription.text = food.description
         holder.foodImage.setImageResource(food.imageResourceId)
+
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(food)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -31,4 +36,9 @@ class FoodAdapter(private val foodList: List<Food>) : RecyclerView.Adapter<FoodA
         val foodName: TextView = itemView.findViewById(R.id.foodName)
         val foodDescription: TextView = itemView.findViewById(R.id.foodDescription)
     }
+
+    interface OnItemClickListener {
+        fun onItemClick(food: Food)
+    }
+
 }

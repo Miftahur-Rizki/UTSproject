@@ -5,30 +5,40 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        val usernameInput = findViewById<EditText>(R.id.username)
-        val passwordInput = findViewById<EditText>(R.id.password)
-        val loginButton = findViewById<Button>(R.id.login_button)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
-        loginButton.setOnClickListener {
-            val username = usernameInput.text.toString()
-            val password = passwordInput.text.toString()
+        val etUsername = findViewById<EditText>(R.id.etUsername)
+        val etPassword = findViewById<EditText>(R.id.etPassword)
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
 
-            // Hardcoded credentials (you can replace this with actual authentication logic)
+
+        btnLogin.setOnClickListener {
+            val username = etUsername.text.toString()
+            val password = etPassword.text.toString()
             if (username == "admin" && password == "1234") {
-                // If login is successful, go to ListFoodActivity
-                val intent = Intent(this, ListFoodActivity::class.java)
+                // Login successful
+                Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@MainActivity, ListFoodActivity::class.java)
                 startActivity(intent)
             } else {
-                // If login fails, show a Toast message
-                Toast.makeText(this, "Invalid login credentials", Toast.LENGTH_SHORT).show()
+                // Login failed
+                Toast.makeText(this, "Invalid username or password!", Toast.LENGTH_SHORT).show()
             }
         }
     }

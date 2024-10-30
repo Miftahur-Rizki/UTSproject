@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="24dp"
+    android:background="#FAFAFA"
     tools:context=".OrderActivity">
 
         <!-- Judul Halaman -->
@@ -15,10 +16,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order Food"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:textStyle="bold"
+            android:textColor="#4CAF50"
+            android:gravity="center"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="24dp"/>
 
         <!-- Input Nama Makanan -->
         <TextView
@@ -26,12 +29,14 @@
             android:layout_height="wrap_content"
             android:text="Food Name"
             android:textSize="18sp"
+            android:textColor="#4CAF50"
             android:layout_marginBottom="8dp"/>
-        <TextView
+        <EditText
             android:id="@+id/etFoodName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter food name - Get From List"
+            android:background="@drawable/input_background"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
@@ -41,6 +46,7 @@
             android:layout_height="wrap_content"
             android:text="Number of Servings"
             android:textSize="18sp"
+            android:textColor="#4CAF50"
             android:layout_marginBottom="8dp"/>
         <EditText
             android:id="@+id/etServings"
@@ -48,24 +54,26 @@
             android:layout_height="wrap_content"
             android:hint="Enter number of servings"
             android:inputType="number"
+            android:background="@drawable/input_background"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Input Jumlah Porsi -->
+        <!-- Input Nama Pengorder -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ordering Name"
             android:textSize="18sp"
+            android:textColor="#4CAF50"
             android:layout_marginBottom="8dp"/>
         <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ordering name by"
+            android:background="@drawable/input_background"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
-
 
         <!-- Input Catatan Tambahan -->
         <TextView
@@ -73,12 +81,14 @@
             android:layout_height="wrap_content"
             android:text="Additional Notes"
             android:textSize="18sp"
+            android:textColor="#4CAF50"
             android:layout_marginBottom="8dp"/>
         <EditText
             android:id="@+id/etNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter any additional notes"
+            android:background="@drawable/input_background"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
@@ -88,7 +98,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Place Order"
+            android:backgroundTint="#4CAF50"
             android:textColor="@android:color/white"
-            android:padding="12dp"/>
+            android:padding="12dp"
+            android:layout_marginTop="8dp"/>
 
 </LinearLayout>
